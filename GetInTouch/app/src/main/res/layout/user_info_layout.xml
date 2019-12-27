@@ -16,7 +16,7 @@
             android:id="@+id/userPicture"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@mipmap/ic_launcher_round"
+            android:src="@drawable/profile_icon"
             />
 
         <TextView

@@ -20,10 +20,11 @@
             app:popupTheme="@style/menuStyle">
 
             <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_marginTop="6dp"
                 android:id="@+id/userProfileImage"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:src="@mipmap/ic_launcher_round"/>
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/profile_icon"/>
 
             <TextView
                 android:id="@+id/userProfileName"
