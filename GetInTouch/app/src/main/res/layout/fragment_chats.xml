@@ -6,13 +6,6 @@
     android:background="@android:color/holo_blue_bright"
     tools:context=".fragments.ChatsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/chatText"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="Chats Page"
-        android:textSize="30dp"/>
+
 
 </FrameLayout>

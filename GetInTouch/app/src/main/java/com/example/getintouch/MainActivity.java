@@ -142,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
             return fragments.size();
         }
 
+        //we create this method to add the fragments and and their title
         public void addFragment(Fragment fragment,String title){
             fragments.add(fragment);
             titles.add(title);
