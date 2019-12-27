@@ -37,7 +37,7 @@ public class StartActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser !=null){
-            startActivity(new Intent(StartActivity.this,RegisterScreen.class));
+            startActivity(new Intent(StartActivity.this,MainActivity.class));
             finish();
         }else {
             Toast.makeText(this, "Login Here", Toast.LENGTH_SHORT).show();
@@ -90,7 +90,7 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    startActivity( new Intent(StartActivity.this,RegisterScreen.class));
+                    startActivity( new Intent(StartActivity.this,MainActivity.class));
                     Toast.makeText(StartActivity.this, "Login SuccessFully", Toast.LENGTH_SHORT).show();
                 }else {
                     Toast.makeText(StartActivity.this, "Authentication Failed.", Toast.LENGTH_SHORT).show();
