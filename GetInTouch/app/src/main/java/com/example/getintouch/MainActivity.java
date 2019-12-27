@@ -1,8 +1,13 @@
 package com.example.getintouch;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +16,10 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.getintouch.fragments.ChatsFragment;
+import com.example.getintouch.fragments.UsersFragment;
 import com.example.getintouch.model.ModelClass;
+import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -19,6 +27,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -71,6 +81,17 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        // below code is for the tabLayout of the app
+        TabLayout tabLayout = findViewById(R.id.tabLayout);
+        ViewPager viewPager = findViewById(R.id.viewPager);
+
+        ViewPageAdapter viewPageAdapter = new ViewPageAdapter(getSupportFragmentManager());
+
+        viewPageAdapter.addFragment(new ChatsFragment(),"Chats");
+        viewPageAdapter.addFragment(new UsersFragment(),"Users");
+        viewPager.setAdapter(viewPageAdapter);
+        tabLayout.setupWithViewPager(viewPager);
     }
 
     // below code is to show the menu on the toolbar
@@ -94,5 +115,43 @@ public class MainActivity extends AppCompatActivity {
                 return true;
         }
         return false;
+    }
+
+
+    // create Adapter for ViewerPage for tabLayout
+
+    class ViewPageAdapter extends FragmentPagerAdapter{
+
+        private ArrayList<Fragment> fragments;
+        private ArrayList<String> titles;
+
+        public ViewPageAdapter(@ NonNull FragmentManager fm) {
+            super(fm);
+            this.fragments = new ArrayList<>();
+            this.titles = new ArrayList<>();
+        }
+
+        @NonNull
+        @Override
+        public Fragment getItem(int position) {
+            return fragments.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return fragments.size();
+        }
+
+        public void addFragment(Fragment fragment,String title){
+            fragments.add(fragment);
+            titles.add(title);
+
+        }
+
+        @Nullable
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return titles.get(position);
+        }
     }
 }
