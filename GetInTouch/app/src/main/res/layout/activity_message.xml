@@ -9,45 +9,60 @@
     tools:context=".MessageActivity">
 
         <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <androidx.appcompat.widget.Toolbar
-                android:layout_marginVertical="10dp"
                 android:id="@+id/toolBar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
                 android:background="@color/colorPrimary"
                 android:theme="@style/Base.ThemeOverlay.AppCompat.Dark.ActionBar"
                 app:popupTheme="@style/menuStyle">
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_marginTop="6dp"
                     android:id="@+id/userProfileImage"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/profile_icon"/>
+                    android:layout_marginTop="6dp"
+                    android:src="@drawable/profile_icon" />
 
                 <TextView
                     android:id="@+id/userName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
                     android:text="Aravind"
                     android:textColor="#ffffff"
                     android:textSize="20dp"
-                    android:textStyle="bold"
-                    android:layout_marginLeft="30dp"
-                    />
+                    android:textStyle="bold" />
             </androidx.appcompat.widget.Toolbar>
 
         </com.google.android.material.appbar.AppBarLayout>
 
-    <RelativeLayout
-        android:padding="5dp"
-        android:layout_marginVertical="6dp"
-        android:layout_marginHorizontal="10dp"
-        android:background="@drawable/messagetyping_background"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/messages_recyclerView"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom"
+        android:layout_below="@+id/app_bar_layout"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="5dp"
+        android:padding="5dp"
+        android:scrollbars="vertical" />
+
+
+    <RelativeLayout
+        android:id="@+id/bottom"
+        android:layout_marginVertical="6dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="10dp"
+        android:paddingHorizontal="15dp"
+        android:paddingVertical="4dp"
+        android:background="@drawable/messagetyping_background"
+        android:layout_width="294dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true">
 
@@ -57,7 +72,11 @@
             android:textSize="20dp"
             android:layout_centerVertical="true"
             android:textColor="#47535E"
-            android:inputType="text"
+            android:inputType="textMultiLine"
+            android:minLines="1"
+            android:maxLines="8"
+            android:scrollbars="vertical"
+            android:singleLine="false"
             android:background="@android:color/transparent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -70,7 +89,25 @@
             android:layout_alignParentRight="true" />
 
 
+
+
     </RelativeLayout>
+
+    <ImageButton
+        android:id="@+id/voice_record_btn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="6dp"
+        android:onClick="onVoiceRecord"
+        android:tooltipText="voice record Button"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/recorder"
+        android:background="@drawable/voice_msg_background"/>
+
+
 
 
 </RelativeLayout>

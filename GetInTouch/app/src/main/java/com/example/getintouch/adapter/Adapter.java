@@ -1,4 +1,4 @@
-package com.example.getintouch;
+package com.example.getintouch.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.getintouch.MessageActivity;
+import com.example.getintouch.R;
 import com.example.getintouch.model.ModelClass;
 
 import java.util.ArrayList;
@@ -39,11 +41,13 @@ public class Adapter extends RecyclerView.Adapter {
         ((UserAdapterViewHolder)holder).setData(username);
 
 
-        // below code is to add the onclick Actions to the userList of the Users Screen
+        // below code is to add the onclick Actions to the userList of the Users Screen and pass the userId to the
+        // MessageActivity to consider as receiver(i.e means with whom we are chatting or sending messages)
+        //and also with this userId only we can fetch the details of the user in the MessageActivity
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context,MessageActivity.class);
+                Intent intent = new Intent(context, MessageActivity.class);
                 intent.putExtra("userid",user.getUserid());
                 context.startActivity(intent);
             }
